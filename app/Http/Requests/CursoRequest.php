@@ -20,7 +20,7 @@ class CursoRequest extends FormRequest
         return [
             'nome.required'=>'Informe o nome do Curso',
             'nome.min'=>'O nome do Curso deve conter ao menos 4 caracteres',
-            'nome.max'=>'O nome do Curso deve conter no máximo 40 caracteres',
+            'nome.max'=>'O nome do Curso deve conter no máximo 60 caracteres',
             'modalidade_id.required'=>'Informe a Modalidade do Curso',
         ];
     }
@@ -32,7 +32,7 @@ class CursoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome'=>'required|min:4|max:40',
+            'nome'=>'required|min:4|max:60',
             'modalidade_id'=>'required',
         ];
     }

@@ -8,8 +8,8 @@
 
     // -------------------------- HOME ---------------------- //      
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::post('home', 'HomeController@busca')->name('busca.resultado');
-    Route::post('home/relatorio', 'HomeController@geraRelatorio')->name('gera.pdf');
+    Route::post('home/busca', 'HomeController@busca')->name('home.busca');
+    // Route::post('home/relatorio', 'HomeController@geraRelatorio')->name('gera.pdf');
 
     // END-------------------------- HOME ----------------------END //
     Route::get('projetos/uploads/{arquivo}', 'ProjetoController@displayFile')->name('projetos.displayFile');

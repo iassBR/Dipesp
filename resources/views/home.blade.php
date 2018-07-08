@@ -20,11 +20,14 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
-                        <form method="post" action="{{route('busca.resultado')}}" enctype="multipart/form-data">
+                        <form  method="POST"  action="{{ route('home.busca') }}" enctype="multipart/form-data">
                             @include('projetos.busca.__form')
                             
-                            <div class="col-lg-12 col-lg-offset-11">
-                                <button type="submit" class="btn btn-success">Filtrar</button>
+                            <div class="col-lg-12 col-lg-offset-10">
+                                <button name="action" value="busca" type="submit" class="btn btn-default">Filtrar</button>
+                                @can('lista-projetos')
+                                <button name="action" value="relatorio" type="submit" href="" class="btn btn-primary" >Relatório</button> 
+                                @endcan                               
                             </div>
                         </form>
                     </div>            
@@ -38,10 +41,38 @@
     </div>
 
 @section('scripts')
+
+    <script>
+
+        $("#filtrar").click( function(){
+            alert("clicou");
+            // console.log( $("#form").serialize() );
+            $.ajax({
+                type: 'POST',
+                url: 'home/busca',
+                data: {
+
+                },
+                success: function(projetos){
+                    for(var i in projetos){
+                        console.log(projetos[i].titulo);
+                    }
+                },
+                error: function(data){
+                    alert("erro "+data.responseJSON);
+                }
+
+            });
+        });
+
+    </script>
+
+
     @component('component.dataTablePT_BR')
         @slot('identifier')
             #projetos
         @endslot
     @endcomponent
 @endsection
+
 @stop

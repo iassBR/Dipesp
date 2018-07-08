@@ -39,6 +39,9 @@
     </div>
 
 @section('scripts')
+
+  
+
     @component('component.dataTablePT_BR')
         @slot('identifier')
             #projetos

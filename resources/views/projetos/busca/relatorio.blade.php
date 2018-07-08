@@ -5,10 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
  
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+        
         
     </head>
     <body>
+     
+        <!-- @foreach($filtros->all() as $filtro => $valor)
+            @if($filtro == '_token')
+
+            @else if()
+                {{$filtro}}: {{$valor}} 
+            @endif
+        
+        @endforeach -->
+       
         <table id="projetos" class="table table-bordered table-striped  dt-responsive nowrap" cellspacing="0" width="100%">
             <thead>
                 <tr>

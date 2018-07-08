@@ -22,7 +22,7 @@
                                 <th>Opções</th>
                             </tr>
                         </thead>
-                        <tbody id="">
+                        <tbody id="tabelaProjetos">
                             @if(isset($projetos))
                                 @foreach($projetos as $projeto)
                                 <tr>
@@ -39,7 +39,7 @@
                                         @can('deletar-projetos')
                                         <a href="{{route('projetos.remove', $projeto)}}"><i class="fa fa-minus-circle text-red"></i></a>
                                         @endcan                                    
-                                        <a href="{{route('projetos.displayFile', $projeto->arquivo)}}"><i class="fa fa-file-pdf-o"></i></a>
+                                        <a  target="blank" href="{{route('projetos.displayFile', $projeto->arquivo)}}"><i class="fa fa-file-pdf-o"></i></a>
                                     </td>      
                                 </tr>                                    
                                 @endforeach
@@ -47,9 +47,7 @@
                         </tbody>                        
                     </table>
                     <tfooter>
-                        <!-- <form method="post" action="{{route('gera.pdf')}}" enctype="multipart/form-data">
-                            
-                        </form> -->
+
                     </tfooter>
                 </div>
                                 

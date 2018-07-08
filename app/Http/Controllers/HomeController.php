@@ -14,30 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-   
 
-
-    private static function carregaFiltro(){
-        $orientadores = Orientador::all();        
-        $alunos = Aluno::all();
-        $areaPesquisas = AreaPesquisa::all();
-        $cursos = Curso::all();
-
-        $data = [
-            'orientadores',
-            'alunos',
-            'areaPesquisas',
-            'cursos'
-        ];
-
-        return compact($data);
-
-    }
     public  function index()
     {
 
@@ -59,35 +36,43 @@ class HomeController extends Controller
 
     }
 
-    public function busca(Request $filtros){
-        
+    public function busca(Request $filtros)
+    {
+
+        $filtros->flash();
+
         $projetos = BuscaProjeto::aplica($filtros);
 
-        $orientadores = Orientador::all();        
-        $alunos = Aluno::all();
-        $areaPesquisas = AreaPesquisa::all();
-        $cursos = Curso::all();
-
-        $data = [
-            'orientadores',
-            'alunos',
-            'areaPesquisas',
-            'cursos',
-            'projetos'
-        ];       
+        switch ($filtros->input('action')) {
+            case 'busca':
+                $orientadores = Orientador::all();        
+                $alunos = Aluno::all();
+                $areaPesquisas = AreaPesquisa::all();
+                $cursos = Curso::all();
         
-        return view('home', compact($data));
+                $data = [
+                    'orientadores',
+                    'alunos',
+                    'areaPesquisas',
+                    'cursos',
+                    'projetos'
+                ];      
+            
+                return view('home', compact($data));
 
+                break;
         
-    }
+            case 'relatorio':
 
-    public function geraRelatorio(Request $filtros)
-    {    
-        $projetos = BuscaProjeto::aplica($filtros);
-        // dd($projetos);
-        return \PDF::loadView('projetos.busca.relatorio', compact('projetos'))
+                return \PDF::loadView('projetos.busca.relatorio', compact('projetos','filtros'))
                     // ->setPaper('a4', 'landscape')
-                    ->download('nome-arquivo-pdf-gerado.pdf');
+                    ->download('Relatório de projetos.pdf');
+                
+                break;
+        }
+       
     }
+
+   
 
 }

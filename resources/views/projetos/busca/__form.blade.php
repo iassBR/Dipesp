@@ -28,8 +28,9 @@ $('.select2').select2();
             <option value="" >Selecione</option>
             @foreach($orientadores as $orientador)            
                 <option value="{{$orientador->id}}" 
-                {{(isset($projeto->orientador_id) && $projeto->orientador_id == $orientador->id ? 
-                'selected' : '')}}>{{$orientador->nome}}
+                {{(isset($orientador->id) && $orientador->id == old('orientador') ? 
+                'selected' : '')}}>
+                {{$orientador->nome}}
                 </option>
             @endforeach
         </select>
@@ -43,8 +44,9 @@ $('.select2').select2();
         <option value="" >Selecione</option>
         @foreach($alunos as $aluno)            
             <option value="{{$aluno->id}}" 
-            {{(isset($projeto->aluno) && $projeto->aluno == $aluno ? 
-            'selected' : '')}}>{{$aluno->nome}}
+            {{(isset($aluno->id) && $aluno->id == old('aluno') ? 
+            'selected' : '')}}>
+            {{$aluno->nome}}
             </option>
         @endforeach
         </select>
@@ -57,8 +59,9 @@ $('.select2').select2();
         <option value="" >Selecione</option>
         @foreach($areaPesquisas as $areaPesquisa)            
             <option value="{{$areaPesquisa->id}}" 
-            {{(isset($projeto->area_pesquisa) && $projeto->area_pesquisa == $areaPesquisa ? 
-            'selected' : '')}}>{{$areaPesquisa->descricao}}
+            {{(isset($areaPesquisa->id) && $areaPesquisa->id == old('area_pesquisa') ? 
+            'selected' : '')}}>
+            {{$areaPesquisa->descricao}}
             </option>
         @endforeach
         </select>
@@ -70,7 +73,9 @@ $('.select2').select2();
         <select class="form-control" name="curso" id="curso" >
         <option value="" >Selecione</option>
         @foreach($cursos as $curso)            
-            <option value="{{$curso->id}}">
+            <option value="{{$curso->id}}"
+            {{ (isset($curso->id) && $curso->id == old('curso') ? 'selected' : '' ) }}
+            >
             {{$curso->nome}} 
             </option>
         @endforeach
@@ -87,7 +92,8 @@ $('.select2').select2();
             <select class="form-control" style="width: auto;" tabindex="-1" aria-hidden="true" name="ano_publicacao" id="ano_publicacao">
             <option value="">Selecione</option>
             @foreach(range(date('Y'), 2000) as $year))
-                <option value="{{$year}}">
+                <option value="{{$year}}"
+                {{ (isset($year) && $year == old('ano_publicacao') ? 'selected' : '' ) }} >
                 {{ $year }}
                 </option>
             @endforeach
@@ -103,9 +109,10 @@ $('.select2').select2();
                 </div>                
                     <select class="form-control" style="width: auto;" tabindex="-1" aria-hidden="true" name="ano_inicio" id="ano_inicio">
                         <option value="">Selecione</option>
-                        @foreach(range(date('Y'), 2000) as $year))
-                            <option value="{{$year}}">
-                            {{ $year }}
+                        @foreach(range(date('Y'), 2000) as $anoInicio))
+                            <option value="{{$anoInicio}}"
+                            {{ (isset($anoInicio) && $anoInicio == old('ano_inicio') ? 'selected' : '' ) }} >
+                            {{ $anoInicio }}
                             </option>
                         @endforeach
                     </select>
@@ -115,9 +122,10 @@ $('.select2').select2();
                 </div>
                     <select class="form-control" style="width: auto;" tabindex="-1" aria-hidden="true" name="ano_fim" id="ano_fim">
                         <option value="">Selecione</option>
-                        @foreach(range(date('Y'), 2000) as $year))
-                            <option value="{{$year}}">
-                            {{ $year }}
+                        @foreach(range(date('Y'), 2000) as $anoFim))
+                            <option value="{{$anoFim}}"
+                            {{ (isset($anoFim) && $anoFim == old('ano_fim') ? 'selected' : '' ) }} >
+                            {{ $anoFim }}
                             </option>
                         @endforeach
                     </select>    

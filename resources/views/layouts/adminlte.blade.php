@@ -235,8 +235,53 @@
 </div>
 
 
+      <script>
+        
+        //antes de submeter os filtros
+        $(document).on('click', '#ano_publicacao', function(){
+         
+            $("#ano_publicacao").change(function(){
+                var id = $("#ano_publicacao").val();
+
+                var anoFim= jQuery('#ano_fim');
+                var anoInicio = jQuery('#ano_inicio');
+                // se a data estiver selecionada, bloquear o campo entre datas
+                if(id != ''){
+                    anoInicio.prop("disabled", true);
+                    anoFim.prop("disabled", true);
+
+                    anoFim.val(0);
+                    anoInicio.val(0);
+                }else{
+                    anoInicio.removeAttr("disabled");
+                    anoFim.removeAttr("disabled");
+                }
+            });
+        });
+        //quando a página recarregar após a requisição
+        $(document).ready( function(){
+            var id = $("#ano_publicacao").val();
+
+            var anoFim= jQuery('#ano_fim');
+            var anoInicio = jQuery('#ano_inicio');
+            // se a data estiver selecionada, bloquear o campo entre datas
+            if(id != ''){
+                anoInicio.prop("disabled", true);
+                anoFim.prop("disabled", true);
+
+                anoFim.val(0);
+                anoInicio.val(0);
+            }else{
+                anoInicio.removeAttr("disabled");
+                anoFim.removeAttr("disabled");
+            }
+
+        });
+        
+    </script>
 
     @yield('scripts')
+
 
 
 </body>
