@@ -42,3 +42,20 @@ mix.combine([
 mix.combine([
     'resources/assets/AdminLTE-2.4.3/bower_components/bootstrap/dist/css/bootstrap.min.css',
 ], 'public/css/bootstrap.min.css');
+
+mix.combine([
+    'resources/assets/AdminLTE-2.4.3/bower_components/bootstrap/dist/css/bootstrap.min.css',
+    'resources/assets/AdminLTE-2.4.3/bower_components/font-awesome/css/font-awesome.min.css',
+    'resources/assets/AdminLTE-2.4.3/bower_components/Ionicons/css/ionicons.min.css',
+    'resources/assets/AdminLTE-2.4.3/plugins/iCheck/square/blue.css',
+], 'public/css/login.min.css');
+
+mix.combine([
+    'resources/assets/AdminLTE-2.4.3/bower_components/jquery/dist/jquery.min.js',
+    'resources/assets/AdminLTE-2.4.3/bower_components/bootstrap/dist/js/bootstrap.min.js',
+    'resources/assets/AdminLTE-2.4.3/plugins/iCheck/icheck.min.js',
+], 'public/js/login.min.js');
+
+mix.combine([ 
+    'resources/assets/AdminLTE-2.4.3/plugins/iCheck/square/blue.png'
+], 'public/css/blue.png');

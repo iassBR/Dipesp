@@ -12,12 +12,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.min.css')}}">
-    {{--  Google Font  --}}
-    <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
-
-
     <div class="login-box ">
         <div class="login-logo">
             <a href=""><b>Dipesp</b></a>
@@ -26,7 +25,7 @@
         <div class="login-box-body ">
             <p class="login-box-msg">Entrar</p>
 
-            <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('login') }}">
                 {{ csrf_field() }}
             <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }} has-feedback" >     
                     <input id="email" type="email" placeholder="Email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
@@ -38,7 +37,7 @@
                     @endif
                     
             </div>
-            <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
+            <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
                 <input id="password" type="password" placeholder="Senha" class="form-control" name="password" required>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 @if ($errors->has('password'))
@@ -49,15 +48,15 @@
             </div>
             <div class="row">
                 <div class="col-xs-8">
-                <div class="checkbox icheck">
-                    <label>
-                    <input type="checkbox"> Lembrar
-                    </label>
-                </div>
+                    <div class="checkbox icheck">
+                        <label class="">
+                        <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Remember Me
+                        </label>
+                    </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
                 </div>
                 <!-- /.col -->
             </div>
@@ -74,7 +73,17 @@
 
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/login.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' /* optional */
+            });
+        });
+    </script>
    
 </body>
 </html>
