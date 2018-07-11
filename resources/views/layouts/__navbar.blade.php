@@ -18,7 +18,7 @@
 
             <!-- Logout buttom -->
             <li>
-                <a href="{{ route('accounts.logout') }}"><i class="fa fa-power-off"></i></a>
+                <a href="{{ route('accounts.logout') }}"></i>{{ (Auth::check())? 'Sair' : 'Entrar' }}</a>
             </li>
         </ul>
     </div>
