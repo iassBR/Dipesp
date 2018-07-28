@@ -26,7 +26,8 @@
                             <div class="col-lg-12 col-lg-offset-10">
                                 <button name="action" value="busca" type="submit" class="btn btn-default">Filtrar</button>
                                 @can('lista-projetos')
-                                <button name="action" value="relatorio" type="submit" href="" class="btn btn-primary" >Relatório</button> 
+                                    <button name="action" value="relatorio" type="submit" href="" class="btn btn-primary">
+                                    Relatório</button> 
                                 @endcan                               
                             </div>
                         </form>
