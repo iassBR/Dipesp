@@ -1,5 +1,8 @@
 {
     "/css/app.min.css": "/css/app.min.css",
     "/js/app.min.js": "/js/app.min.js",
-    "/css/bootstrap.min.css": "/css/bootstrap.min.css"
+    "/css/bootstrap.min.css": "/css/bootstrap.min.css",
+    "/css/login.min.css": "/css/login.min.css",
+    "/js/login.min.js": "/js/login.min.js",
+    "/css/blue.png": "/css/blue.png"
 }
