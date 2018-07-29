@@ -43,7 +43,7 @@ class OrientadorController extends Controller
             
         }else{
             $orientador = Orientador::create($request->All());
-            return redirect()->action('OrientadorController@index')->with('success','Orientador cadastrado com sucesso');
+            return redirect()->action('OrientadorController@index')->with('success','Orientador '.$orientador->nome.'  cadastrado com sucesso');
         }    
         
     }
@@ -79,7 +79,7 @@ class OrientadorController extends Controller
         }else{
             $orientador = Orientador::find($id);
             $orientador->update($request->all());
-            return redirect()->action('OrientadorController@index')->with('success','Orientador editado com sucesso'); 
+            return redirect()->action('OrientadorController@index')->with('success','Orientador '.$orientador->nome.' editado com sucesso'); 
         }
        
     }
@@ -91,10 +91,18 @@ class OrientadorController extends Controller
             abort(403,"Não autorizado!");
         }
 
-        $orientador = Orientador::find($id);
-        $orientador->delete();
-        Session::flash('success', 'Orientador deletado com sucesso');
-        return View::make('__flash');
+        try{
+            $orientador = Orientador::find($id);
+            $nome = $orientador->nome;
+            $orientador->delete();
+            Session::flash('success', 'Orientador '.$nome.' deletado com sucesso');
+            return View::make('__flash');
+        }catch( \Exception $e){
+            Session::flash('error', 'Erro ao deletar o orientador '.$nome.'! 
+                                     Verifique se o orientador não está cadastrado em um projeto');
+            return View::make('__flash');
+        }
+       
         
     }
 }

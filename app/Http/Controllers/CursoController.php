@@ -47,7 +47,7 @@ class CursoController extends Controller
             return response()->json($curso);
         }else{
             $curso = Curso::create($request->All()); 
-            return redirect()->action('CursoController@index')->with('success','Curso cadastrado com sucesso');
+            return redirect()->action('CursoController@index')->with('success','Curso '.$curso->nome.' cadastrado com sucesso');
         }  
     }
 
@@ -81,7 +81,7 @@ class CursoController extends Controller
         }else{
             $curso = Curso::find($id);
             $curso->update($request->all());
-            return redirect()->action('CursoController@index')->with('success','Curso editado com sucesso'); 
+            return redirect()->action('CursoController@index')->with('success','Curso '.$curso->nome.' editado com sucesso'); 
         }
     }
 
@@ -91,8 +91,10 @@ class CursoController extends Controller
         if(Gate::denies('deletar-cursos')){
             abort(403,"Não autorizado!");
         }
-        Curso::find($id)->delete();
-        Session::flash('success','Curso deletado com sucesso');
+        $curso = Curso::find($id);
+        $nome = $curso->nome;
+        $curso->delete();
+        Session::flash('success','Curso '.$nome.' deletado com sucesso');
         View::make('__flash');
     }
 }

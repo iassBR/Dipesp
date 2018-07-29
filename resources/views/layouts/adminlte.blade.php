@@ -91,8 +91,8 @@
         });
 
         $(document).ready(function(){        
-            $("#sucesso").fadeOut(5000);
-            $("#erro").fadeOut(5000); 
+            $("#sucesso").fadeOut(10000);
+            $("#erro").fadeOut(10000); 
         });
     </script>
 
@@ -154,88 +154,82 @@
     
     {{-- Modal Form Edit, Show and Delete Post --}}
     <div id="modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-           
-
-            <!-- Hide-Show form-horizontal -->
-            <form class="form-horizontal" role="modal">
-                <input type="hidden" class="form-control" name="id" id="id" disabled>
-                <!-- Nome -->
-                <div class="form-group">
-                    <label class="control-label col-sm-2" >Nome</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nome" disabled>
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">          
+                <!-- Hide-Show form-horizontal -->
+                <form class="form-horizontal" role="modal">
+                    <input type="hidden" class="form-control" name="id" id="id" disabled>
+                    <!-- Nome -->
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" >Nome</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="nome" disabled>
+                        </div>
                     </div>
-                </div>
-                <!-- Email -->
-                <div class="email form-group">
-                    <label class="control-label col-sm-2" >Email</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="email" disabled>
+                    <!-- Email -->
+                    <div class="email form-group">
+                        <label class="control-label col-sm-2" >Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="email" disabled>
+                        </div>
                     </div>
-                </div>
-                <!-- Descrição -->
-                <div class="descricao form-group">
-                    <label class="control-label col-sm-2" >Descrição</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="descricao" disabled>
+                    <!-- Descrição -->
+                    <div class="descricao form-group">
+                        <label class="control-label col-sm-2" >Descrição</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="descricao" disabled>
+                        </div>
                     </div>
-                </div>
-                 <!-- Matricula -->
-                <div class="matricula form-group">
-                    <label class="control-label col-sm-2"for="matricula">Matricula</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="matricula" disabled>
+                    <!-- Matricula -->
+                    <div class="matricula form-group">
+                        <label class="control-label col-sm-2"for="matricula">Matricula</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="matricula" disabled>
+                        </div>
                     </div>
-                </div>
-                <!-- Curso -->
-                <div class="curso form-group">
-                    <label class="control-label col-sm-2" for="curso">Curso</label>
-                    <div class="col-sm-10">
-                        <input id="curso" class="form-control" name="curso" disabled>                                        
+                    <!-- Curso -->
+                    <div class="curso form-group">
+                        <label class="control-label col-sm-2" for="curso">Curso</label>
+                        <div class="col-sm-10">
+                            <input id="curso" class="form-control" name="curso" disabled>                                        
+                        </div>
                     </div>
-                </div>
-                <!-- Modalidade -->
-                 <div class="modalidade form-group">
-                    <label class="control-label col-sm-2" for="modalidade">Modalidade</label>
-                    <div class="col-sm-10">
-                        <input id="modalidade"  class="form-control" name="modalidade" disabled >                                      
+                    <!-- Modalidade -->
+                    <div class="modalidade form-group">
+                        <label class="control-label col-sm-2" for="modalidade">Modalidade</label>
+                        <div class="col-sm-10">
+                            <input id="modalidade"  class="form-control" name="modalidade" disabled >                                      
+                        </div>                   
                     </div>                   
-                </div>
-                
+                </form>
+            
+            {{-- Form Delete Post --}}
+            <div class="deleteContent">
+                Você realmente deseja remover  <strong><span class="nome"></span></strong>?
+                <span class="hidden id"></span>
+            </div>
 
-            </form>
-        
-        {{-- Form Delete Post --}}
-        <div class="deleteContent">
-          Você realmente deseja remover  <strong><span class="nome"></span></strong>?
-          <span class="hidden id"></span>
         </div>
+        <div class="modal-footer">
+            <button type="button" class="btn actionBtn" data-dismiss="modal">
+                <span id="footer_action_button" class="fa fa-check"> </span>
+            </button>
 
-      </div>
-      <div class="modal-footer">
-
-        <button type="button" class="btn actionBtn" data-dismiss="modal">
-          <span id="footer_action_button" class="fa fa-check"> </span>
-        </button>
-
-        <button type="button" class="btn btn-warning" data-dismiss="modal">
-          <span class="fa fa-remove"></span> Fechar
-        </button>
-
-      </div>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span class="fa fa-remove"></span> Fechar
+            </button>
+        </div>
     </div>
-  </div>
-</div>
+    </div>
+    </div>
 
 
-      <script>
+    <script>
         
         //antes de submeter os filtros
         $(document).on('click', '#ano_publicacao', function(){

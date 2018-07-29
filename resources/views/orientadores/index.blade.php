@@ -126,7 +126,7 @@
         $('.modal-title').text('Orientador:  '+$(this).data("nome"));
 
         $('.form-horizontal').show();     
-        $('#modal').modal('show');
+        $('#modal').modal('show');      
     });
     
    

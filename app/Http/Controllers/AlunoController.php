@@ -44,7 +44,7 @@ class AlunoController extends Controller
             return response()->json($aluno);
         }else{
             $aluno = Aluno::create($request->All()); 
-            return redirect()->action('AlunoController@index')->with('success','Aluno cadastrado com sucesso');
+            return redirect()->action('AlunoController@index')->with('success','Aluno '.$aluno->nome.' cadastrado com sucesso');
         }  
                       
     }
@@ -82,7 +82,7 @@ class AlunoController extends Controller
         }else{
             
             $aluno->update($request->all());
-            return redirect()->action('AlunoController@index')->with('success','Aluno editado com sucesso'); 
+            return redirect()->action('AlunoController@index')->with('success','Aluno '.$aluno->nome.'  editado com sucesso'); 
         }
     }
 
@@ -95,11 +95,12 @@ class AlunoController extends Controller
 
         try{
             $aluno = Aluno::find($id);
+            $nome = $aluno->nome;
             $aluno->delete();
-            Session::flash('success', 'Aluno deletado com sucesso');
+            Session::flash('success', 'Aluno'.$nome.'deletado com sucesso');
             return View::make('__flash');
         }catch( \Exception $e){
-            Session::flash('error', $e->getMessage());
+            Session::flash('error', 'Erro ao deletar o aluno '.$nome.'! Verifique se o aluno não está cadastrado em um projeto');
             return View::make('__flash');
         }
         

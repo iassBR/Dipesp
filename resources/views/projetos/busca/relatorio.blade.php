@@ -18,7 +18,7 @@
         <div id="page-header">
             <center>
                 <span>
-                    <img src="/home/giordani/Desktop/Dipesp/public/images/mini_logo_header_center.png" class="image-header"/>
+                    <img src="C:\Users\igora\Documents\GitHub\Dipesp\public\images/mini_logo_header_center.png" class="image-header"/>
                 </span>
                 
                 <span id="isntitucional-header">

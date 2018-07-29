@@ -154,16 +154,17 @@ class ProjetoController extends Controller
             abort(403,"Não autorizado!");
         }
         try {
+            $titulo = $projeto->titulo;
             $projeto->delete();
-
             $url = url('home');
             if($request->input('previous') == $url){
-                return redirect()->action('HomeController@index')->with('success','Projeto deletado com sucesso');
+                return redirect()->action('HomeController@index')->with('success','Projeto '.$titulo.' deletado com sucesso');
             }else{
-                return redirect()->action('ProjetoController@index')->with('success','Projeto deletado com sucesso');
+                return redirect()->action('ProjetoController@index')->with('success','Projeto '.$titulo.' deletado com sucesso');
             }
         } catch (\Exception $e) {
-            return redirect()->action('ProjetoController@index')->with(['error',  'message' => $e->getMessage()]);
+            return redirect()->action('ProjetoController@index')->with(['error',  'message' => 'Erro ao deletar o '.$titulo.'! 
+                                                                                                Contate o suporte!'.$e->getMessage()]);
         }
     }
 
