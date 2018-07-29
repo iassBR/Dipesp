@@ -64,8 +64,10 @@ class HomeController extends Controller
         
             case 'relatorio':
 
-                return \PDF::loadView('projetos.busca.relatorio', compact('projetos','filtros'))
-                    // ->setPaper('a4', 'landscape')
+                $descricao = $filtros->descricao;
+
+                return \PDF::loadView('projetos.busca.relatorio', compact('projetos','filtros', 'descricao'))
+                    ->setPaper('a4')
                     ->download('Relatório de projetos.pdf');
                 
                 break;
